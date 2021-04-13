@@ -16,8 +16,8 @@ Työhaaran vaihto `git checkout <branch>`
 Pidetään commit-viestit lyhyinä ja ytimekkäinä. Käytetään commiteissa käskymuotoa. E.g."Fix a bug x".
 
 Haarojen yhdistäminen:  
-Mene haaraan johon toinen haara yhdistetään `git checkout development`  
-Yhdistä toinen haara tähän haaraan mergellä `git merge <työhaara>`
+Mene haaraan johon toinen haara yhdistetään `git checkout <main branch>`  
+Yhdistä toinen haara tähän haaraan mergellä `git merge <feature branch>`
 
 Jos fast-forward ei onnistu (tulee merge konflikteja), korjaa konfliktit manuaalisesti.  
 Korjausten jälkeen committaa muutokset esim viestillä "Fix merge conflicts" ja suorita merge.
