@@ -3,7 +3,8 @@
 // Do make changes to this file, and create more source
 // files in this directory if needed.
 // Make sure everything is added to course-gitlab before submitting
-//
+// valto kommentti
+
 #include "concur2021.hh"
 #include <iostream>
 #include <string>
