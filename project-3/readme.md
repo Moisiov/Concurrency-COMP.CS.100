@@ -5,10 +5,13 @@ Master-haara pidetään siistinä ja siellä aina toimiva/kääntyvä ohjelmaver
 
 Development-haarassa ohjelman kehitysversio ja uudet toiminnot luodaan developmentin päältä tehtyihin työhaaroihin.
 
-Uuden haaran luonti lokaalisti komennolla `git checkout -b <haaran nimi>`  
-Uuden haaran vienti remoteen `git push -u origin <haaran nimi>`
+Uuden haaran luonti lokaalisti komennolla `git checkout -b <branch>`  
+Uuden haaran vienti remoteen `git push -u <remote> <branch>`
 
-Työhaaran vaihto `git checkout <haaran nimi>`
+Vastaavasti haaran poisto lokaalisti tapahtuu komennolla `git branch -d <branch>`  
+Ja haaran poisto remotesta `git push -d <remote> <branch>`
+
+Työhaaran vaihto `git checkout <branch>`
 
 Pidetään commit-viestit lyhyinä ja ytimekkäinä. Käytetään commiteissa käskymuotoa. E.g."Fix a bug x".
 
