@@ -9,6 +9,9 @@
 #include <string>
 #include <unordered_map>
 
+#include <thread>
+#include <vector>
+
 const unsigned SAMPLES = 1000;
 
 // data structure to count how many time we have seen
@@ -45,12 +48,35 @@ void WheresAhto() {
     countLocation( location );
 }
 
-int main() {
+void hello(int i) {
+    std::cout << "Nyt multitaskataan " << i << std::endl;
+}
 
+void perform_WheresAhto() {
+    for( int i = 0; i < 100; i++ ) {
+        WheresAhto();
+    }
+}
+
+int main() {
+    /* Original
     for( unsigned i = 0; i < SAMPLES; i++ ) {
         WheresAhto();
     }
-    printCounters();
+    printCounters(); */
+
+    std::vector<std::thread> threads;
+
+    int amount_threads = 10;
+
+    for (int i=0; i < amount_threads; i++) {
+        threads.push_back(std::thread(perform_WheresAhto));
+    }
+
+    for (auto& thread : threads) {
+        thread.join();
+    }
+
     return EXIT_SUCCESS;
 
 }
