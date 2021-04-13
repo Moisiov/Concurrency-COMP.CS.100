@@ -15,3 +15,6 @@ Pidetään commit-viestit lyhyinä ja ytimekkäinä. Käytetään commiteissa k�
 Haarojen yhdistäminen:  
 Mene haaraan johon toinen haara yhdistetään `git checkout development`  
 Yhdistä toinen haara tähän haaraan mergellä `git merge <työhaara>`
+
+Jos fast-forward ei onnistu (tulee merge konflikteja), korjaa konfliktit manuaalisesti.  
+Korjausten jälkeen committaa muutokset esim viestillä "Fix merge conflicts" ja suorita merge.
