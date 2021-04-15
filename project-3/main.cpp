@@ -3,14 +3,18 @@
 // Do make changes to this file, and create more source
 // files in this directory if needed.
 // Make sure everything is added to course-gitlab before submitting
-// valto kommentti
 
 #include "concur2021.hh"
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <thread>
+#include <vector>
+#include <future>
+#include <mutex>
 
 const unsigned SAMPLES = 1000;
+std::mutex m;
 
 // data structure to count how many time we have seen
 // a location (binary id in lib)
@@ -21,7 +25,9 @@ void countLocation( concur2021::locationID_t id )
 {
     // save for later use that we have seen the location
     // (in 1st read C++ will initialize value to zero)
+    m.lock();
     locCounters[ id ] = locCounters[id] + 1;
+    m.unlock();
 }
 
 void printCounters() {
@@ -35,7 +41,9 @@ void printCounters() {
 
 
 void WheresAhto() {
+    m.lock();
     auto location = concur2021::detect(); // API tells us the location (binary id)
+    m.unlock();
 
     // print out the name and location URL right away:
     auto locname  = concur2021::locationName( location );
@@ -47,6 +55,16 @@ void WheresAhto() {
 }
 
 int main() {
+
+    /*std::vector<std::thread> threads;
+
+    for (unsigned i = 0; i < SAMPLES; i++) {
+        threads.push_back(std::thread(WheresAhto));
+    }
+
+    for (auto& th : threads) {
+        th.join();
+    }*/
 
     for( unsigned i = 0; i < SAMPLES; i++ ) {
         WheresAhto();
