@@ -26,4 +26,6 @@ Korjausten jälkeen committaa muutokset esim viestillä "Fix merge conflicts" ja
 Funktiot kommentoidaan doxygen-tyyliin ja kommenteista generoidaan automaattinen dokumentaatio.
 Doxygen-kommentti luodaan aloittamalla kommentti funktion yläpuolella merkein `/**` ja painamalla `Enter`.
 
-Dokumentointi luodaan komentorivillä projektin juuressa olevalla .doxygen_conf tiedostolla käyttämällä komentoa `doxygen .doxygen_conf`.
+Projektitiedostoon lisätty doxygen-komento, eli	dokumentti päivittyy aina buildin yhteydessä.
+Doxygen voidaan myös ajaa manuaalisesti komentorivillä projektin juuressa olevalla .doxygen_conf tiedostolla käyttämällä komentoa `doxygen .doxygen_conf`.
+
