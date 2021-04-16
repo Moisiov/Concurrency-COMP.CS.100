@@ -59,6 +59,10 @@ void WheresAhto() {
     countLocation( location );
 }
 
+/**
+ * @brief main brief test
+ * @return asdf
+ */
 int main() {
 
     std::vector<std::thread> threads;
