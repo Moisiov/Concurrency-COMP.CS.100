@@ -16,6 +16,22 @@ ThreadPool::~ThreadPool()
     stop();
 }
 
+template<class T>
+auto ThreadPool::enqueue(ThreadPool::Task task)->std::future<decltype (task())>
+{
+    auto wrapper = std::make_shared<std::packaged_task
+            <decltype(task())()>>(std::move(task));
+
+    {
+        std::unique_lock<std::mutex> lock{m_mutex_};
+        m_tasks_.emplace([=]{(*wrapper)();});
+    }
+
+    m_cond_var_.notify_one();
+    return wrapper->get_future();
+}
+
+
 void ThreadPool::start(std::size_t thread_count)
 {
     for (unsigned i = 0; i < thread_count; ++i)
@@ -23,10 +39,19 @@ void ThreadPool::start(std::size_t thread_count)
         m_threads_.emplace_back([=]{
             while (1)
             {
-                std::unique_lock<std::mutex> lock{m_mutex_};
-                m_cond_var_.wait(lock, [=]{return m_stopping_;});
+                Task task;
+                {
+                    std::unique_lock<std::mutex> lock{m_mutex_};
+                    m_cond_var_.wait(lock, [=]{return m_stopping_
+                                || !m_tasks_.empty();});
 
-                if (m_stopping_) break;
+                    if (m_stopping_ && m_tasks_.empty()) break;
+
+                    task = std::move(m_tasks_.front());
+                    m_tasks_.pop();
+                }
+
+                task();
             }
         });
     }

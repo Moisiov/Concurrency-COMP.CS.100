@@ -7,6 +7,7 @@
 #include <condition_variable>
 #include <mutex>
 #include <queue>
+#include <future>
 
 /**
  * @brief The ThreadPool class handles threads and tasks.
@@ -31,7 +32,18 @@ public:
      */
     explicit ThreadPool(std::size_t thread_count);
 
+    /**
+     * @brief ThreadPool destructor calls stop().
+     */
     ~ThreadPool();
+
+    /**
+     * @brief enqueue puts a new task in the task queue.
+     * @param task is a function of type T
+     * @return returns a future
+     */
+    template<class T>
+    auto enqueue(Task task)->std::future<decltype (task())>;
 
 private:
     std::vector<std::thread> m_threads_;
