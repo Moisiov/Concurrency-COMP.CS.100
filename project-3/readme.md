@@ -21,3 +21,9 @@ Yhdistä toinen haara tähän haaraan mergellä `git merge <feature branch>`
 
 Jos fast-forward ei onnistu (tulee merge konflikteja), korjaa konfliktit manuaalisesti.  
 Korjausten jälkeen committaa muutokset esim viestillä "Fix merge conflicts" ja suorita merge.
+
+## Dokumentointi
+Funktiot kommentoidaan doxygen-tyyliin ja kommenteista generoidaan automaattinen dokumentaatio.
+Doxygen-kommentti luodaan aloittamalla kommentti funktion yläpuolella merkein `/**` ja painamalla `Enter`.
+
+Dokumentointi luodaan komentorivillä projektin juuressa olevalla .doxygen_conf tiedostolla käyttämällä komentoa `doxygen .doxygen_conf`.
