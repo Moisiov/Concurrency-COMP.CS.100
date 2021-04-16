@@ -12,6 +12,7 @@
 #include <vector>
 #include <future>
 #include <mutex>
+#include <numeric>
 
 const unsigned SAMPLES = 1000;
 std::mutex m;
@@ -30,6 +31,11 @@ void countLocation( concur2021::locationID_t id )
 
 void printCounters() {
     std::cout << "-------------------------------------------------------------" << std::endl;
+    Counter tot = std::accumulate(locCounters.begin(), locCounters.end(), 0,
+                                   [](const Counter previous, const auto& el)
+                                        {return previous + el.second; });
+
+    std::cout << "Total count: " << tot << std::endl;
     // print number of time we have seen a location
     for( auto& id : locCounters ) {
         auto name = concur2021::locationName( id.first );

@@ -24,7 +24,7 @@ namespace { // library privates
 
 const unsigned int NUM_ITEMS = 35;
 std::random_device rd;
-std::mt19937 gen(5);
+std::mt19937 gen(rd());
 std::uniform_int_distribution<> dis(0,NUM_ITEMS-1);
 
 typedef std::tuple< concur2021::locationID_t, std::string, std::string, std::string > globalLocation_t;
