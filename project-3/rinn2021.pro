@@ -16,6 +16,10 @@ include( concur2021lib/concur2021.pri )
 
 # Implement your own code here:
 SOURCES += \
-    main.cpp
+    main.cpp \
+    threadpool.cpp
 
 system(doxygen $PWD/.doxygen_conf)
+
+HEADERS += \
+    threadpool.h
