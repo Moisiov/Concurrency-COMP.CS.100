@@ -31,3 +31,17 @@ void ThreadPool::start(std::size_t thread_count)
         });
     }
 }
+
+void ThreadPool::stop() noexcept
+{
+    {
+        std::unique_lock<std::mutex> lock{m_mutex_};
+        m_stopping_ = true;
+    }
+
+    m_cond_var_.notify_all();
+
+    for (auto& th : m_threads_) {
+        th.join();
+    }
+}
