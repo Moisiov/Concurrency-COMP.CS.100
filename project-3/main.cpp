@@ -25,9 +25,7 @@ void countLocation( concur2021::locationID_t id )
 {
     // save for later use that we have seen the location
     // (in 1st read C++ will initialize value to zero)
-    m.lock();
     locCounters[ id ] = locCounters[id] + 1;
-    m.unlock();
 }
 
 void printCounters() {
@@ -45,6 +43,7 @@ void WheresAhto() {
     auto location = concur2021::detect(); // API tells us the location (binary id)
     m.unlock();
 
+
     // print out the name and location URL right away:
     auto locname  = concur2021::locationName( location );
     std::cout << "Found at: " << locname << std::endl;
@@ -56,7 +55,7 @@ void WheresAhto() {
 
 int main() {
 
-    /*std::vector<std::thread> threads;
+    std::vector<std::thread> threads;
 
     for (unsigned i = 0; i < SAMPLES; i++) {
         threads.push_back(std::thread(WheresAhto));
@@ -64,11 +63,11 @@ int main() {
 
     for (auto& th : threads) {
         th.join();
-    }*/
-
-    for( unsigned i = 0; i < SAMPLES; i++ ) {
-        WheresAhto();
     }
+
+    /*for( unsigned i = 0; i < SAMPLES; i++ ) {
+        WheresAhto();
+    }*/
     printCounters();
     return EXIT_SUCCESS;
 
