@@ -17,3 +17,5 @@ include( concur2021lib/concur2021.pri )
 # Implement your own code here:
 SOURCES += \
     main.cpp
+
+system(doxygen $PWD/.doxygen_conf)
