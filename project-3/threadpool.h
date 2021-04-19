@@ -44,10 +44,29 @@ public:
     void enqueue(Task task);
 
 private:
+    /**
+     * @brief m_threads_ holds all the threads in thread pool
+     */
     std::vector<std::thread> m_threads_;
+
+    /**
+     * @brief m_cond_var_ is used to notify threads
+     */
     std::condition_variable m_cond_var_;
+
+    /**
+     * @brief m_mutex_ mutex lock for ThreadPool
+     */
     std::mutex m_mutex_;
+
+    /**
+     * @brief m_stopping_ flag indicating if ThreadPool is stopping (destructor called)
+     */
     bool m_stopping_ = false;
+
+    /**
+     * @brief m_tasks_ holds all the functions waiting to be executed
+     */
     std::queue<Task> m_tasks_;
 
     void start(std::size_t thread_count);
