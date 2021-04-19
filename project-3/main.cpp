@@ -65,31 +65,19 @@ void WheresAhto() {
  */
 int main() {
 
-    // Threads
-    /*std::vector<std::thread> threads;
+    // ThreadPool handles task execution in threads
+    ThreadPool* pool = new ThreadPool();
 
-    for (unsigned i = 0; i < SAMPLES; i++) {
-        threads.push_back(std::thread(WheresAhto));
-    }
-
-    for (auto& th : threads) {
-        th.join();
-    }*/
-
-    // Original
-    /*for( unsigned i = 0; i < SAMPLES; i++ ) {
-        WheresAhto();
-    }*/
-
-    // ThreadPool
-    ThreadPool* pool = new ThreadPool(8);
-
+    // Add tasks to task queue
     for(unsigned i = 0; i < SAMPLES; i++)
     {
         pool->enqueue(WheresAhto);
     }
 
+    // Destroy ThreadPool object (wait all tasks to finish)
     delete pool;
+
+    // Print result
     printCounters();
 
     return EXIT_SUCCESS;
