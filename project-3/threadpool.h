@@ -39,11 +39,9 @@ public:
 
     /**
      * @brief enqueue puts a new task in the task queue.
-     * @param task is a function of type T
-     * @return returns a future
+     * @param task is a void function
      */
-    template<class T>
-    auto enqueue(T task)->std::future<decltype (task())>;
+    void enqueue(Task task);
 
 private:
     std::vector<std::thread> m_threads_;

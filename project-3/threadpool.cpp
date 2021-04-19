@@ -16,21 +16,14 @@ ThreadPool::~ThreadPool()
     stop();
 }
 
-template<class T>
-auto ThreadPool::enqueue(T task)->std::future<decltype (task())>
+void ThreadPool::enqueue(Task task)
 {
-    auto wrapper = std::make_shared<std::packaged_task
-            <decltype(task())()>>(std::move(task));
-
     {
-        std::unique_lock<std::mutex> lock{m_mutex_};
-        m_tasks_.emplace([=]{(*wrapper)();});
+        std::unique_lock<std::mutex> lock(m_mutex_);
+        m_tasks_.emplace(task);
     }
-
     m_cond_var_.notify_one();
-    return wrapper->get_future();
 }
-
 
 void ThreadPool::start(std::size_t thread_count)
 {

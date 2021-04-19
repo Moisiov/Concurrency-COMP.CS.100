@@ -50,7 +50,6 @@ void WheresAhto() {
     auto location = concur2021::detect(); // API tells us the location (binary id)
     m.unlock();
 
-
     // print out the name and location URL right away:
     auto locname  = concur2021::locationName( location );
     std::cout << "Found at: " << locname << std::endl;
@@ -83,14 +82,16 @@ int main() {
     }*/
 
     // ThreadPool
-    ThreadPool pool{32};
+    ThreadPool* pool = new ThreadPool(8);
 
     for(unsigned i = 0; i < SAMPLES; i++)
     {
-        pool.enqueue(WheresAhto);
+        pool->enqueue(WheresAhto);
     }
 
+    delete pool;
     printCounters();
+
     return EXIT_SUCCESS;
 
 }
