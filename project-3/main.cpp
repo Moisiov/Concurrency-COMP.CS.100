@@ -65,7 +65,10 @@ void WheresAhto() {
  */
 int main() {
 
-    // ThreadPool handles task execution in threads
+    // ThreadPool handles task execution in threads.
+    // Calling constructor without parameters sets
+    // thread number equal to hardware thread contexts.
+    // Defaults to 8 if thread contexts are not defined.
     ThreadPool* pool = new ThreadPool();
 
     // Add tasks to task queue
