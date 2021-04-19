@@ -43,7 +43,7 @@ public:
      * @return returns a future
      */
     template<class T>
-    auto enqueue(Task task)->std::future<decltype (task())>;
+    auto enqueue(T task)->std::future<decltype (task())>;
 
 private:
     std::vector<std::thread> m_threads_;

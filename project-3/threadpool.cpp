@@ -17,7 +17,7 @@ ThreadPool::~ThreadPool()
 }
 
 template<class T>
-auto ThreadPool::enqueue(ThreadPool::Task task)->std::future<decltype (task())>
+auto ThreadPool::enqueue(T task)->std::future<decltype (task())>
 {
     auto wrapper = std::make_shared<std::packaged_task
             <decltype(task())()>>(std::move(task));

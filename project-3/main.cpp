@@ -13,6 +13,7 @@
 #include <future>
 #include <mutex>
 #include <numeric>
+#include "threadpool.h"
 
 const unsigned SAMPLES = 1000;
 std::mutex m;
@@ -60,12 +61,13 @@ void WheresAhto() {
 }
 
 /**
- * @brief main brief test
- * @return asdf
+ * @brief main is the starting point of the program
+ * @return exit status
  */
 int main() {
 
-    std::vector<std::thread> threads;
+    // Threads
+    /*std::vector<std::thread> threads;
 
     for (unsigned i = 0; i < SAMPLES; i++) {
         threads.push_back(std::thread(WheresAhto));
@@ -73,11 +75,21 @@ int main() {
 
     for (auto& th : threads) {
         th.join();
-    }
+    }*/
 
+    // Original
     /*for( unsigned i = 0; i < SAMPLES; i++ ) {
         WheresAhto();
     }*/
+
+    // ThreadPool
+    ThreadPool pool{32};
+
+    for(unsigned i = 0; i < SAMPLES; i++)
+    {
+        pool.enqueue(WheresAhto);
+    }
+
     printCounters();
     return EXIT_SUCCESS;
 
