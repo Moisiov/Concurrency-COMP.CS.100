@@ -61,7 +61,9 @@ void WheresAhto() {
     std::cout << concur2021::locationURL( location ) << std::endl;
 
     // record the location seen
+    m.lock();
     countLocation( location );
+    m.unlock();
 }
 
 /**
