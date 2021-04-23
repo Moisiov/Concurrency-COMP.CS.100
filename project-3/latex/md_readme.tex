@@ -1,0 +1,23 @@
+\subsection*{Gitin käyttö}
+
+Master-\/haara pidetään siistinä ja siellä aina toimiva/kääntyvä ohjelmaversio.
+
+Development-\/haarassa ohjelman kehitysversio ja uudet toiminnot luodaan developmentin päältä tehtyihin työhaaroihin.
+
+Uuden haaran luonti nykyisestä haarasta lokaalisti komennolla {\ttfamily git checkout -\/b $<$branch$>$} Uuden haaran vienti remoteen {\ttfamily git push -\/u $<$remote$>$ $<$branch$>$}
+
+Vastaavasti haaran poisto lokaalisti tapahtuu komennolla {\ttfamily git branch -\/d $<$branch$>$} Ja haaran poisto remotesta {\ttfamily git push -\/d $<$remote$>$ $<$branch$>$}
+
+Työhaaran vaihto komennolla {\ttfamily git checkout $<$branch$>$}
+
+Pidetään commit-\/viestit lyhyinä ja ytimekkäinä. Käytetään commiteissa käskymuotoa. E.\-g.\char`\"{}\-Fix a bug x\char`\"{}.
+
+Haarojen yhdistäminen\-: Mene haaraan johon toinen haara yhdistetään {\ttfamily git checkout $<$main branch$>$} Yhdistä toinen haara tähän haaraan mergellä {\ttfamily git merge $<$feature branch$>$}
+
+Jos fast-\/forward ei onnistu (tulee merge konflikteja), korjaa konfliktit manuaalisesti. Korjausten jälkeen committaa muutokset esim viestillä \char`\"{}\-Fix merge conflicts\char`\"{} ja suorita merge.
+
+\subsection*{Dokumentointi}
+
+Funktiot kommentoidaan doxygen-\/tyyliin ja kommenteista generoidaan automaattinen dokumentaatio. Doxygen-\/kommentti luodaan aloittamalla kommentti funktion yläpuolella merkein {\ttfamily /$\ast$$\ast$} ja painamalla {\ttfamily Enter}.
+
+Projektitiedostoon lisätty doxygen-\/komento, eli dokumentti päivittyy aina buildin yhteydessä. Doxygen voidaan myös ajaa manuaalisesti komentorivillä projektin juuressa olevalla .doxygen\-\_\-conf tiedostolla käyttämällä komentoa {\ttfamily doxygen .doxygen\-\_\-conf}. 

@@ -1,0 +1,103 @@
+\hypertarget{classThreadPool}{\section{Thread\-Pool Class Reference}
+\label{classThreadPool}\index{Thread\-Pool@{Thread\-Pool}}
+}
+
+
+The \hyperlink{classThreadPool}{Thread\-Pool} class handles threads and tasks.  
+
+
+
+
+{\ttfamily \#include $<$threadpool.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task} = std\-::function$<$ void()$>$
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classThreadPool_a3225e86aa7835545b3f6c2c8d363d5e5}{Thread\-Pool} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classThreadPool}{Thread\-Pool} constructor creates a \hyperlink{classThreadPool}{Thread\-Pool} object. Constructor checks the defined amount of threads in the system and adds that many threads to the pool. If supported threads is not defined, number of threads defaults to 8. \end{DoxyCompactList}\item 
+\hyperlink{classThreadPool_a742d47b13aee454402f90dfaca486c30}{Thread\-Pool} (std\-::size\-\_\-t thread\-\_\-count)
+\begin{DoxyCompactList}\small\item\em \hyperlink{classThreadPool}{Thread\-Pool} constructor overload allows \hyperlink{classThreadPool}{Thread\-Pool} to be created with any given number of threads. \end{DoxyCompactList}\item 
+\hyperlink{classThreadPool_a44d3d2ab618970605e684efc216655eb}{$\sim$\-Thread\-Pool} ()
+\begin{DoxyCompactList}\small\item\em \hyperlink{classThreadPool}{Thread\-Pool} destructor calls stop(). \end{DoxyCompactList}\item 
+void \hyperlink{classThreadPool_aa49e3d9f1ea6e6aafd00d7635e4ae61e}{enqueue} (\hyperlink{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{Task} task)
+\begin{DoxyCompactList}\small\item\em enqueue puts a new task in the task queue. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{classThreadPool}{Thread\-Pool} class handles threads and tasks. 
+
+\subsection{Member Typedef Documentation}
+\hypertarget{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}{\index{Thread\-Pool@{Thread\-Pool}!Task@{Task}}
+\index{Task@{Task}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{Task}]{\setlength{\rightskip}{0pt plus 5cm}using {\bf Thread\-Pool\-::\-Task} =  std\-::function$<$void()$>$}}\label{classThreadPool_a9ccb63332c10a0b36c7475f5e8629010}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classThreadPool_a3225e86aa7835545b3f6c2c8d363d5e5}{\index{Thread\-Pool@{Thread\-Pool}!Thread\-Pool@{Thread\-Pool}}
+\index{Thread\-Pool@{Thread\-Pool}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{Thread\-Pool}]{\setlength{\rightskip}{0pt plus 5cm}Thread\-Pool\-::\-Thread\-Pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classThreadPool_a3225e86aa7835545b3f6c2c8d363d5e5}
+
+
+\hyperlink{classThreadPool}{Thread\-Pool} constructor creates a \hyperlink{classThreadPool}{Thread\-Pool} object. Constructor checks the defined amount of threads in the system and adds that many threads to the pool. If supported threads is not defined, number of threads defaults to 8. 
+
+\hypertarget{classThreadPool_a742d47b13aee454402f90dfaca486c30}{\index{Thread\-Pool@{Thread\-Pool}!Thread\-Pool@{Thread\-Pool}}
+\index{Thread\-Pool@{Thread\-Pool}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{Thread\-Pool}]{\setlength{\rightskip}{0pt plus 5cm}Thread\-Pool\-::\-Thread\-Pool (
+\begin{DoxyParamCaption}
+\item[{std\-::size\-\_\-t}]{thread\-\_\-count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{classThreadPool_a742d47b13aee454402f90dfaca486c30}
+
+
+\hyperlink{classThreadPool}{Thread\-Pool} constructor overload allows \hyperlink{classThreadPool}{Thread\-Pool} to be created with any given number of threads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em thread\-\_\-count} & number of threads \\
+\hline
+\end{DoxyParams}
+\hypertarget{classThreadPool_a44d3d2ab618970605e684efc216655eb}{\index{Thread\-Pool@{Thread\-Pool}!$\sim$\-Thread\-Pool@{$\sim$\-Thread\-Pool}}
+\index{$\sim$\-Thread\-Pool@{$\sim$\-Thread\-Pool}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{$\sim$\-Thread\-Pool}]{\setlength{\rightskip}{0pt plus 5cm}Thread\-Pool\-::$\sim$\-Thread\-Pool (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classThreadPool_a44d3d2ab618970605e684efc216655eb}
+
+
+\hyperlink{classThreadPool}{Thread\-Pool} destructor calls stop(). 
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classThreadPool_aa49e3d9f1ea6e6aafd00d7635e4ae61e}{\index{Thread\-Pool@{Thread\-Pool}!enqueue@{enqueue}}
+\index{enqueue@{enqueue}!ThreadPool@{Thread\-Pool}}
+\subsubsection[{enqueue}]{\setlength{\rightskip}{0pt plus 5cm}void Thread\-Pool\-::enqueue (
+\begin{DoxyParamCaption}
+\item[{{\bf Task}}]{task}
+\end{DoxyParamCaption}
+)}}\label{classThreadPool_aa49e3d9f1ea6e6aafd00d7635e4ae61e}
+
+
+enqueue puts a new task in the task queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em task} & is a void function \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{threadpool_8h}{threadpool.\-h}\item 
+\hyperlink{threadpool_8cpp}{threadpool.\-cpp}\end{DoxyCompactItemize}
