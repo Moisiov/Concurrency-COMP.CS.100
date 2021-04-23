@@ -23,6 +23,10 @@ std::mutex m;
 typedef uint64_t Counter;
 std::unordered_map< concur2021::locationID_t, Counter > locCounters;
 
+/**
+ * @brief countLocation raises location counters
+ * @param id location id
+ */
 void countLocation( concur2021::locationID_t id )
 {
     // save for later use that we have seen the location
@@ -30,6 +34,9 @@ void countLocation( concur2021::locationID_t id )
     locCounters[ id ] = locCounters[id] + 1;
 }
 
+/**
+ * @brief printCounters prints all locations and counters where Ahto has been seen
+ */
 void printCounters() {
     std::cout << "-------------------------------------------------------------" << std::endl;
 
@@ -40,7 +47,9 @@ void printCounters() {
     }
 }
 
-
+/**
+ * @brief WheresAhto calls concur2021 API to detect locations where Ahto has been seen
+ */
 void WheresAhto() {
     m.lock();
     auto location = concur2021::detect(); // API tells us the location (binary id)

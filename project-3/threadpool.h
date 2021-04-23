@@ -69,7 +69,16 @@ private:
      */
     std::queue<Task> m_tasks_;
 
+    /**
+     * @brief start starts the thread pool with given number of threads
+     * @param thread_count number of threads
+     */
     void start(std::size_t thread_count);
+
+    /**
+     * @brief stop waits for all the tasks and threads to finish and
+     * sets m_stopping_ flag to true
+     */
     void stop() noexcept;
 };
 
