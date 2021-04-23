@@ -32,11 +32,7 @@ void countLocation( concur2021::locationID_t id )
 
 void printCounters() {
     std::cout << "-------------------------------------------------------------" << std::endl;
-    Counter tot = std::accumulate(locCounters.begin(), locCounters.end(), 0,
-                                   [](const Counter previous, const auto& el)
-                                        {return previous + el.second; });
 
-    std::cout << "Total count: " << tot << std::endl;
     // print number of time we have seen a location
     for( auto& id : locCounters ) {
         auto name = concur2021::locationName( id.first );
@@ -69,16 +65,15 @@ int main() {
     // Calling constructor without parameters sets
     // thread number equal to hardware thread contexts.
     // Defaults to 8 if thread contexts are not defined.
-    ThreadPool* pool = new ThreadPool();
-
-    // Add tasks to task queue
-    for(unsigned i = 0; i < SAMPLES; i++)
     {
-        pool->enqueue(WheresAhto);
-    }
+        ThreadPool pool;
 
-    // Destroy ThreadPool object (wait all tasks to finish)
-    delete pool;
+        // Add tasks to task queue
+        for(unsigned i = 0; i < SAMPLES; i++)
+        {
+            pool.enqueue(WheresAhto);
+        }
+    }
 
     // Print result
     printCounters();
