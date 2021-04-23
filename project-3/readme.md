@@ -29,3 +29,4 @@ Doxygen-kommentti luodaan aloittamalla kommentti funktion yläpuolella merkein `
 Projektitiedostoon lisätty doxygen-komento, eli	dokumentti päivittyy aina buildin yhteydessä.
 Doxygen voidaan myös ajaa manuaalisesti komentorivillä projektin juuressa olevalla .doxygen_conf tiedostolla käyttämällä komentoa `doxygen .doxygen_conf`.
 
+Doxygenin luoma dokumentaatio löytyy html -muodossa sijainnista `/html/index.html` ja LaTeX -muodossa sijainnista `/latex/`.
